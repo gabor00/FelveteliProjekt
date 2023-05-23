@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [UserController::class, 'index']);
+Route::post('/login/checklogin', [UserController::class, 'checklogin']);
+Route::get('/login/successlogin', [UserController::class, 'successlogin']);
+Route::get('/login/logout', [UserController::class, 'logout']);
+Route::get('/companies/index', [CompanyController::class, 'index']);
+
+Route::resource('companies', CompanyController::class);
+
+Route::get('list', [CompanyController::class, 'index']);
+
