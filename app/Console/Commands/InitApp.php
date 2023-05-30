@@ -9,9 +9,9 @@ use Illuminate\Support\Str;
 
 class InitApp extends Command
 {
-    protected $signature = 'app:init';
+    protected $signature = 'app:init-user';
 
-    protected $description = 'Initialize the application';
+    protected $description = 'Initialize users';
 
     public function handle()
     {

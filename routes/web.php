@@ -14,9 +14,7 @@ use App\Http\Controllers\CompanyController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [UserController::class, 'index']);
 
 Route::get('/login', [UserController::class, 'index']);
 Route::post('/login/checklogin', [UserController::class, 'checklogin']);
