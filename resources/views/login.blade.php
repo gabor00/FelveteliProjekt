@@ -9,6 +9,7 @@
         <title>Login</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -27,7 +28,6 @@
                                         @if ($message =Session::get('error'))
                                         <div class="alert alert-danger alert-block">
                                             <strong>{{ $message }}</strong>
-
                                         @endif
 
                                         @if(count($errors) > 0)

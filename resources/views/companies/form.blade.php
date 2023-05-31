@@ -14,7 +14,7 @@
     <body class="bg-secondary">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar-->
-            <li class="btn btn-info"><a href="javascript:history.back()">Back</a></li>
+            <li class="btn btn-info"><a href="../../companies">Back</a></li>
             <ul class="navbar-nav ms-auto ms-md-end me-3 me-lg-4">
                     
                 @if(isset(Auth::user()->email))
@@ -44,18 +44,30 @@
                                 <div class="mb-4">
                                     <label for="name" class="form-label">Company Name </label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $company->name) }}">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-4">
                                     <label for="tax_number" class="form-label">Tax Number </label>
                                     <input type="text" class="form-control" id="tax_number" name="tax_number" value="{{ old('tax_number', $company->tax_number) }}">
+                                    @error('tax_number')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-4">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $company->phone) }}">
+                                    <input type="text" class="form-control" id="phone" pattern="[0-9.-()]*" name="phone" value="{{ old('phone', $company->phone) }}">
+                                    @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $company->email) }}">
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 
