@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
@@ -25,8 +27,13 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'tax_number' => 'required',
+            'name' => 'required|min:3|unique:companies',
+            'tax_number' => 'required|regex:/^\d{3}-\d{3}-\d{3}$/', 'size:11|unique:companies',
+            'phone' => 'required|regex:/^[0-9.+\-()]+$/|unique:companies',
+            'email' => 'required|email|unique:companies'
+        ],[
+            'phone.regex' => 'Only numbers, (), +, dots . and dashes - ',
+            'tax_number.regex' => 'Pattern ###-###-###'
         ]);
 
         Company::create($request->all());
@@ -50,8 +57,13 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $request->validate([
-            'name' => 'required',
-            'tax_number' => 'required',
+            'name' => 'required|min:3|unique:companies,name, ' . $company->id ,
+            'tax_number' => 'required|regex:/^\d{3}-\d{3}-\d{3}$/', 'size:11|unique:companies,name, ' . $company->id,
+            'phone' => 'required|regex:/^[0-9.+\-()]+$/|unique:companies,name, ' . $company->id,
+            'email' => 'required|email|unique:companies,name, ' . $company->id
+        ],[
+            'phone.regex' => 'Only numbers, (), +, dots . and dashes - ',
+            'tax_number.regex' => 'Pattern ###-###-###'
         ]);
 
         $company->update($request->all());
@@ -65,5 +77,7 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.index')->with('success', 'Company deleted successfully.');
     }
+
+    
 }
 
