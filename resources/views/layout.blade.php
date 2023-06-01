@@ -17,7 +17,17 @@
         <!-- Navbar -->
         <li class="btn btn-info"><a href="/companies">Companies</a></li>
         <ul class="navbar-nav ms-auto ms-md-end me-3 me-lg-4">
-            @yield('auth')
+            @yield('head_bar')
+            @if (Auth::check())
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{ url('/login/logout') }}">Logout</a></li>
+                </ul>
+            </li>
+        @else
+            <script>window.location="/login";</script>
+        @endif
         </ul>
     </nav>
     <main>
