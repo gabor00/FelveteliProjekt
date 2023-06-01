@@ -4,10 +4,13 @@ Kövesd az alábbi lépéseket a projekt telepítéséhez és beállításához 
 ## Előfeltételek
 Győződj meg róla, hogy a következő szoftverek telepítve vannak a gépeden:
 
-PHP (X.X.X verzió)
-Composer (X.X.X verzió)
-MySQL (X.X.X verzió)
-Git (X.X.X verzió)
+    PHP (X.X.X verzió)
+
+    Composer (X.X.X verzió)
+
+    MySQL (X.X.X verzió)
+    
+    Git (X.X.X verzió)
 
 ## Repository klónozása
 
@@ -46,10 +49,15 @@ Git (X.X.X verzió)
 2. A .env fájlban frissitsd az adatbázis hitelesítési adatokat:
 
     DB_CONNECTION=mysql
+
     DB_HOST=127.0.0.1
+
     DB_PORT=3306
+
     DB_DATABASE=your_database_name
+
     DB_USERNAME=your_username
+
     DB_PASSWORD=your_password
 
 3. Futtasd az adatbázis migrációt a szükséges táblák létrehozásához:
